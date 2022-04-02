@@ -14,6 +14,28 @@ $authService = new AuthService();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
+    <style>
+        a:link {
+            color: blue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:visited {
+            color: darkblue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        a:hover {
+            color: deeppink;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        a:active {
+            color: red;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -40,7 +62,8 @@ $authService = new AuthService();
                         <form class="form-inline my-5 my-lg-1 justify-content-start">
                             <a class="nav-link active" aria-current="page" href="../../admin/viewAllEmployee.php">View All Employee</a>
                             <a class="nav-link active" aria-current="page" href="../../admin/viewAllLeave.php">View All Leave</a>
-                            <a class="nav-link active" aria-current="page" href="../../admin/addEmployee.php">Add/Edit Employee</a>
+                            <a class="nav-link active" aria-current="page" href="../../admin/add_Employee.php">Add Employee</a>
+
                         </form>
                         <?php }else{?>
                     <form class="form-inline my-5 my-lg-1 justify-content-start">

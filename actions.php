@@ -23,18 +23,22 @@ if (isset($_REQUEST['action'])) {
                 header('location: /index.php?message=Successfully Logged Out');
             }
             break;
-        case 'apply for leave':
+
+            case 'apply for leave':
             $leave = new Leave();
             if($leave->insert([
                 'date'=>$_POST['date'],
                 'message'=>$_POST['message'],
                 'user_id'=>$authService->getCurrentUserId(),
             ])){
-               header('location:/employee/viewLeaveStatus.php?message=Leave applied successfully');
+               header('location:/employee/viewLeaveStatus.php?alert=Leave applied successfully');
             }
-
-
             break;
+
+
+
+
+
 
 
     }

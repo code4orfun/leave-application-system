@@ -5,7 +5,5 @@ require 'common/services/session.php';
 require 'common/services/auth.php';
 
 require 'common/db/models/leave.php';
-
-$leave = new Leave();
-echo "<pre>";
-print_r($leave->select(['*'],'user_id=1'));
+echo '<pre>';
+print_r((new User())->select(['name']));

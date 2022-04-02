@@ -43,7 +43,7 @@ abstract class Model implements HasTableName
         return true;
     }
 
-    public function update($data, $where): bool
+    public function update($data, $where)
     {
         $tableName = $this->table;
         $emptyData = [];
@@ -52,23 +52,21 @@ abstract class Model implements HasTableName
             array_push($emptyData, $sqlQuery);
         }
 
-        $emptyData = join(',', $emptyData);
-        $query = "UPDATE $tableName SET {$emptyData} where {$where}";
-        print_r($query);
+        $emptyData = join(', ', $emptyData);
+        $query = "UPDATE $tableName SET $emptyData where $where";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return true;
+
+        return $stmt->execute();
 
     }
 
 
-    public function delete($where): bool
+    public function delete($where)
     {
         $tableName = $this->table;
         $query = "DELETE from $tableName where $where";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return true;
+        return $stmt->execute();
     }
 
     public function findById(int $id)
@@ -88,5 +86,23 @@ abstract class Model implements HasTableName
             return $data[0];
         }
         return [];
+    }
+
+    public function findByJoin(): array
+    {
+        $query = "SELECT departments.title, users.id, users.name, users.email, users.password, 
+       users.is_admin, users.created_at from departments RIGHT JOIN users on departments.id = users.dept_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
+    }
+    function getDropDown(): array
+    {
+        $query = "SELECT id,title from departments";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     }
 }
