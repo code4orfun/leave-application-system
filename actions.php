@@ -35,6 +35,17 @@ if (isset($_REQUEST['action'])) {
             }
             break;
 
+            print_r($id);
+        case 'accept':
+            $leave = new Leave();
+            if(isset($_GET['accept'])) {
+                $id = $_GET['accept'];
+                $leave->update([
+                    'status' => '1'
+                ], "id='$id'");
+            }
+            break;
+
 
 
 

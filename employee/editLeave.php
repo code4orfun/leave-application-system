@@ -21,6 +21,3 @@ if(isset($_GET['edit'])) {
 }
 ?>
 
-<?php
-include __DIR__.DIRECTORY_SEPARATOR.'../common/views/footer.php';
-?>

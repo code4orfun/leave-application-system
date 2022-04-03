@@ -28,10 +28,20 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/db/models/leave.php';
                         <td> <?= $leave['user_id']; ?> </td>
                         <td> <?= date('d-m-Y \a\t h:i ',strtotime($leave['date'])); ?> </td>
                         <td> <?= $leave['message']; ?> </td>
-                        <td> <button class="btn btn-primary" type="submit">Accept</button>
+                        <td> <button class="btn btn-primary" type="submit" value="accept?action.php">
+                                <a href ="viewAllLeave.php?accept=<?= $leave['id']; ?>">Accept</a></button>
                          <button class="btn btn-primary" type="submit">Reject</button></td>
                     </tbody>
                     <?php } ?>
+
+                    <?php
+                    $leave = new Leave();
+                    if(isset($_GET['accept'])){
+                        $id = $_GET['accept'];
+                        $leave->update(['status' => "1"],"id='$id'");
+                        echo "Leave accepted";
+                    }
+                    ?>
 
 
 
