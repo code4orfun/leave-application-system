@@ -2,7 +2,7 @@
 include __DIR__ . DIRECTORY_SEPARATOR . '../common/views/header.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/db/models/leave.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/services/auth.php';
-
+error_reporting(0);
 ?>
     <div class="container mt-3">
         <div class="row">
@@ -57,20 +57,22 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/services/auth.php';
                                 <td>
                                     <?= $leave['message'] ?>
                                 </td>
+
                                 <td>
                                     <a href="viewLeaveStatus.php?edit=<?= $leave['id'];?>" class="btn btn-primary btn-sm">Edit</a>
-                                    <a class="btn btn-danger btn-sm">Cancel</a>
-                                    <?php if(isset($_GET['edit'])==true){ ?>
-
                                 </td>
-
                             </tr>
-
                         </tbody>
-
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php if(isset($_GET['edit'])) { ?>
                         <section class="container">
-                            <div class="row justify-content-center h-75 align-items-center">
-                                <div class="col-md-7 border shadow-sm p-3 mb-5 bg-white rounded">
+                            <div class="row justify-content-center h-50 align-items-center md-5">
+                                <div class="col-xl-9 border shadow-sm p-5 mb-3 bg-black rounded">
                                     <h3 class="text-primary mb-4">Edit</h3>
                                     <form method="post" action="editLeave.php?edit=<?= $_GET['edit']?>" >
 
@@ -87,19 +89,9 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/services/auth.php';
                                 </div>
                             </div>
                         </section>
-                        <?php  exit(); } ?>
-                        <?php } ?>
-
-
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<?php } ?>
 <?php
-
-include __DIR__ . DIRECTORY_SEPARATOR . '../common/views/footer.php';
+//include __DIR__ . DIRECTORY_SEPARATOR . '../common/views/footer.php';
 ?>
 
 
