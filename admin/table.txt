@@ -1,0 +1,2 @@
+1,ravi,ravi@gmail.com,ravi@123,1,1,"2022-03-27 15:41:38"
+2,"Vinay Tripathi",vinay@gmail.com,vinay@123,0,5,"2022-03-26 18:50:44"

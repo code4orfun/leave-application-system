@@ -22,12 +22,12 @@ $authService = new AuthService();
         }
         a:visited {
             color: darkblue;
-            background-color: transparent;
+            background-color: deeppink;
             text-decoration: none;
         }
         a:hover {
             color: deeppink;
-            background-color: transparent;
+            background-color: gold;
             text-decoration: underline;
         }
         a:active {

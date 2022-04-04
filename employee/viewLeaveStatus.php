@@ -37,6 +37,7 @@ error_reporting(0);
                             <th scope="col">Applied at</th>
                             <th scope="col">Applied for</th>
                             <th scope="col">Message</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Actions</th>
                         </tr>
                         </thead>
@@ -57,6 +58,15 @@ error_reporting(0);
                                 <td>
                                     <?= $leave['message'] ?>
                                 </td>
+                                <td> <?php $leave['status'];
+                                    if($leave['status'] == 1){
+                                ?> <span class = "text-primary">Approved</span> <?php } ?>
+
+                                 <?php if($leave['status'] == -1){ ?>
+                                <span class = "text-primary">Pending</span> <?php } ?>
+
+                                <?php if(!$leave['status']){ ?>
+                                <span class = "text-primary">Rejected</span><?php } ?></td>
 
                                 <td>
                                     <a href="viewLeaveStatus.php?edit=<?= $leave['id'];?>" class="btn btn-primary btn-sm">Edit</a>
@@ -93,5 +103,4 @@ error_reporting(0);
 <?php
 //include __DIR__ . DIRECTORY_SEPARATOR . '../common/views/footer.php';
 ?>
-
 

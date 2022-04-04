@@ -3,8 +3,20 @@ include __DIR__.DIRECTORY_SEPARATOR.'../common/views/header.php';
 include __DIR__.DIRECTORY_SEPARATOR.'../common/views/footer.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/services/auth.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/db/models/leave.php';
+error_reporting(0);
 ?>
 
+<div class="container">
+    <div class="row-md-12">
+        <?php
+        if (isset($_REQUEST['message']) && !empty($_REQUEST['message'])) {
+            ?>
+            <div class="alert alert-success" role="alert">
+                <?= htmlspecialchars(trim($_REQUEST['message'])) ?>
+            </div>
+        <?php } ?>
+    </div>
+</div>
 
 <div class="border border-2">
     <div class="container mt-1">
@@ -28,9 +40,10 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/db/models/leave.php';
                         <td> <?= $leave['user_id']; ?> </td>
                         <td> <?= date('d-m-Y \a\t h:i ',strtotime($leave['date'])); ?> </td>
                         <td> <?= $leave['message']; ?> </td>
-                        <td> <button class="btn btn-primary" type="submit" value="accept?action.php">
+                        <td> <button class="btn btn-warning" type="submit">
                                 <a href ="viewAllLeave.php?accept=<?= $leave['id']; ?>">Accept</a></button>
-                         <button class="btn btn-primary" type="submit">Reject</button></td>
+                            <button class="btn btn-danger" type="submit">
+                                <a href ="viewAllLeave.php?reject=<?= $leave['id']; ?>">Reject</a></button></td>
                     </tbody>
                     <?php } ?>
 
@@ -39,9 +52,16 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../common/db/models/leave.php';
                     if(isset($_GET['accept'])){
                         $id = $_GET['accept'];
                         $leave->update(['status' => "1"],"id='$id'");
-                        echo "Leave accepted";
+                        header('location:/admin/viewAllLeave.php?message=Leave Approved');
+                    }
+
+                    if(isset($_GET['reject'])){
+                        $id = $_GET['reject'];
+                        $leave->update(['status' => "0"],"id='$id'");
+                        header('location:/admin/viewAllLeave.php?message=Leave Rejected');
                     }
                     ?>
+
 
 
 

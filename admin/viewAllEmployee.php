@@ -21,6 +21,15 @@ include __DIR__.DIRECTORY_SEPARATOR.'../common/views/footer.php';
     </div>
 </div>
 
+<div>
+    <div>
+        <form action = "adminData.php" method="post">
+            <input type="Submit" name = "submit" class="btn btn-primary" value="Download Data">
+        </form>
+
+    </div>
+</div>
+
 <div class="border border-2">
     <div class="container mt-1">
         <div class="row">
